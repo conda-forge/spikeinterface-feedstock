@@ -1,5 +1,5 @@
 {% set name = "spikeinterface" %}
-{% set version = "0.101.0" %}
+{% set version = "0.101.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/spikeinterface-{{ version }}.tar.gz
-  sha256: a5a6c3a6c5a62627c5cb341dd364fbed232f4a7a19ed67a274065fd5f3de3ace
+  sha256: e06db61eebd7f516b9e5e543599962ed4fd8d266ccd5184eef933f00935b7176
 
 build:
   noarch: python
