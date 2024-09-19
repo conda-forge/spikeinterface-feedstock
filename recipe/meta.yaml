@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -28,6 +28,10 @@ requirements:
     - python-neo >=0.13.0
     - probeinterface >=0.2.23
     - packaging
+  run_constrained:
+    # As of 0.101.1, the minimum supported version of Kilosort4 is 4.0.16:
+    # https://github.com/SpikeInterface/spikeinterface/pull/3339
+    - kilosort >=4.0.16
 
 test:
   imports:
