@@ -25,8 +25,8 @@ requirements:
     - threadpoolctl >=3.0.0
     - tqdm
     - zarr >=2.18,<3
-    - python-neo >=0.14.1
-    - probeinterface >=0.3.0
+    - python-neo >=0.14.3
+    - probeinterface >=0.3.1
     - packaging
     - pydantic
     - numcodecs <0.16.0
