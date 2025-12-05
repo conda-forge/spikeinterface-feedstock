@@ -1,0 +1,57 @@
+schema_version: 1
+
+context:
+  name: spikeinterface
+  version: 0.103.2
+  numpy_min: ${{ "2.0.0" if match(python_min, ">=3.13") else "1.2.0" }}
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/spikeinterface-${{ version }}.tar.gz
+  sha256: 827be06b427fbf3b166742e723f7e4034543698a5b45dd932fb5dd857f09a2f1
+
+build:
+  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  noarch: python
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=78.0.2
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - numpy >=${{ numpy_min }}
+    - threadpoolctl >=3.0.0
+    - tqdm
+    - zarr >=2.18,<3
+    - python-neo >=0.14.3
+    - probeinterface >=0.3.1
+    - packaging
+    - pydantic
+    - numcodecs <0.16.0
+  run_constraints:
+    - kilosort >=4.0.16
+
+tests:
+  - python:
+      imports:
+        - spikeinterface
+      pip_check: true
+      python_version: ${{ python_min }}.*
+
+about:
+  summary: Python toolkit for analysis, visualization, and comparison of spike sorting output
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/SpikeInterface/spikeinterface
+  repository: https://github.com/SpikeInterface/spikeinterface
+  documentation: https://spikeinterface.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - dhmjhu
