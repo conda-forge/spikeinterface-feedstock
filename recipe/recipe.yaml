@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: spikeinterface
-  version: "0.104.4"
+  version: "0.104.5"
   numpy_min: ${{ "2.0.0" if match(python_min, ">=3.13") else "1.2.0" }}
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/spikeinterface-${{ version }}.tar.gz
-  sha256: a6292b49278924ab9777dcd9419929667a20e285485681425efc576164e3337e
+  sha256: 26ffbfb1d04142e3aafeed2591185a0f69ef5ed1f3f5a9e368ef6c5e68d54103
 
 build:
   number: 0
