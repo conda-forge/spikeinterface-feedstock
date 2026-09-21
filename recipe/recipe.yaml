@@ -2,8 +2,7 @@ schema_version: 1
 
 context:
   name: spikeinterface
-  version: "0.104.9"
-  numpy_min: ${{ "2.0.0" if match(python_min, ">=3.13") else "1.2.0" }}
+  version: "0.105.0"
 
 package:
   name: ${{ name|lower }}
@@ -11,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/spikeinterface-${{ version }}.tar.gz
-  sha256: 22a992b2e2c3216eda82c0f7304e6453bd0e4ec033f815f3a2670de7485d6e08
+  sha256: e3c854e77c2968061cc7f210ac06d4f1474ebd0be74358e8a5680b2ac31e79dc
 
 build:
   number: 0
@@ -25,12 +24,12 @@ requirements:
     - pip
   run:
     - python >=${{ python_min }}
-    - numpy >=${{ numpy_min }}
+    - numpy >=2.0.0
     - threadpoolctl >=3.0.0
     - tqdm
     - zarr >=2.18,<3
-    - python-neo >=0.14.4
-    - probeinterface >=0.3.2
+    - python-neo >=0.14.5
+    - probeinterface >=0.4.0
     - packaging
     - pydantic
     - numcodecs <0.16.0
@@ -42,7 +41,9 @@ tests:
       imports:
         - spikeinterface
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
   summary: Python toolkit for analysis, visualization, and comparison of spike sorting output
