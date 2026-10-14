@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: spikeinterface
-  version: "0.105.0"
+  version: "0.105.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/spikeinterface-${{ version }}.tar.gz
-  sha256: e3c854e77c2968061cc7f210ac06d4f1474ebd0be74358e8a5680b2ac31e79dc
+  sha256: d4ca6e6366562f883f11cd0845281b7bd5ee42413ddd628d50a4d23d61d419ea
 
 build:
   number: 0
