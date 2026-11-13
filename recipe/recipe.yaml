@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: spikeinterface
-  version: "0.105.4"
+  version: "0.106.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/spikeinterface-${{ version }}.tar.gz
-  sha256: 7d6f3778988f2ee1bce43a4427db41d0a6f3b6580fb5c78668f37ebb400e94bd
+  sha256: 56a10323eb60223ff5da5d333e591cf205dca638f8ff9f0214056287319a6185
 
 build:
-  number: 1
+  number: 0
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -23,21 +23,16 @@ requirements:
     - pip
   run:
     - python
+    - if: match(python, ">=3.14")
+      then: numpy >=2.3.2
+      else: numpy >=2.0.0
     - threadpoolctl >=3.0.0
     - tqdm
-    - python-neo >=0.14.5
-    - probeinterface >=0.4.0
+    - zarr >=3,<4
+    - python-neo >=0.14.6
+    - probeinterface >=0.5.0
     - packaging
     - pydantic
-    - if: match(python, ">=3.14")
-      then:
-        - numpy >=2.3.2
-        - zarr >=3
-        - numcodecs >=0.16.5
-      else:
-        - numpy >=2.0.0
-        - zarr >=2.18,<3
-        - numcodecs <0.16.0
   run_constraints:
     - kilosort >=4.0.16
 
